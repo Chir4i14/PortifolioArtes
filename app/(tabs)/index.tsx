@@ -31,9 +31,7 @@ export default function HomeScreen() {
   const { width } = useWindowDimensions();
   const isSmallScreen = width < 768;
 
-  if (!fontsLoaded) {
-    return null;
-  }
+  if (!fontsLoaded) return null;
 
   const items = [
     { type: 'title', title: 'Coisas que eu faço' },
@@ -136,59 +134,59 @@ export default function HomeScreen() {
                   ]}
                   resizeMode="cover"
                 />
+
                 <View style={styles.textContainer}>
                   {item.subtitle && <Text style={styles.subtitle}>{item.subtitle}</Text>}
                   <Text style={styles.text}>{item.text}</Text>
 
                   {item.instagramUrl && (
-  <TouchableOpacity
-    style={[
-      styles.instagramButton,
-      {
-        width: isSmallScreen ? width * 0.85 : 400,
-        height: isSmallScreen ? 80 : 100,
-      },
-    ]}
-    onPress={() => handlePressInstagram(item.instagramUrl)}
-  >
-    <Image
-      source={
-        item.instagramName === '@chirai.cacaushow'
-          ? LogoCacau
-          : item.instagramName === '@arte.nickmus_vendas'
-          ? VendasInsta
-          : ChiraiInsta
-      }
-      style={[
-        styles.instagramImage,
-        {
-          width: isSmallScreen ? 60 : 80,
-          height: isSmallScreen ? 60 : 80,
-        },
-      ]}
-      resizeMode="cover"
-    />
-    <View style={styles.instagramTextContainer}>
-      <Text
-        style={[
-          styles.instagramTitle,
-          { fontSize: isSmallScreen ? 14 : 16 },
-        ]}
-      >
-        Instagram ({item.instagramName})
-      </Text>
-      <Text
-        style={[
-          styles.instagramSubtitle,
-          { fontSize: isSmallScreen ? 12 : 14 },
-        ]}
-      >
-        Instagram photos and videos
-      </Text>
-    </View>
-  </TouchableOpacity>
-)}
-
+                    <TouchableOpacity
+                      style={[
+                        styles.instagramButton,
+                        {
+                          width: isSmallScreen ? width * 0.85 : 400,
+                          height: isSmallScreen ? 80 : 100
+                        }
+                      ]}
+                      onPress={() => handlePressInstagram(item.instagramUrl)}
+                    >
+                      <Image
+                        source={
+                          item.instagramName === '@chirai.cacaushow'
+                            ? LogoCacau
+                            : item.instagramName === '@arte.nickmus_vendas'
+                            ? VendasInsta
+                            : ChiraiInsta
+                        }
+                        style={[
+                          styles.instagramImage,
+                          {
+                            width: isSmallScreen ? 60 : 80,
+                            height: isSmallScreen ? 60 : 80
+                          }
+                        ]}
+                        resizeMode="cover"
+                      />
+                      <View style={styles.instagramTextContainer}>
+                        <Text
+                          style={[
+                            styles.instagramTitle,
+                            { fontSize: isSmallScreen ? 14 : 16 }
+                          ]}
+                        >
+                          Instagram ({item.instagramName})
+                        </Text>
+                        <Text
+                          style={[
+                            styles.instagramSubtitle,
+                            { fontSize: isSmallScreen ? 12 : 14 }
+                          ]}
+                        >
+                          Instagram photos and videos
+                        </Text>
+                      </View>
+                    </TouchableOpacity>
+                  )}
                 </View>
               </View>
             );
